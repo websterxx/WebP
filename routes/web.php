@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RessourcesController;
 use App\Http\Controllers\CRessourceController;
 use App\Http\Controllers\CreateUserController;
+use App\Http\Controllers\CreateAnomalieController;
 use App\Http\Controllers\CreateTicketController;
 use App\Http\Controllers\ListUsersController;
 use App\Http\Controllers\Auth\LoginController;
@@ -31,13 +32,17 @@ Route::post('/logout', [LogoutController::class, 'store']) ->name('logout');
 Route::get('/login', [LoginController::class, 'index']) ->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
-//Route::get('/register', [RegisterController::class, 'index']) ->name('register');
-//Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index']) ->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/createuser', [CreateUserController::class, 'index']) ->name('createuser');
 Route::post('/createuser', [CreateUserController::class, 'store']);
 
-Route::get('/createticket', [CreateTicketController::class, 'index']) ->name('createticket');
+Route::get('/createanomalie', [CreateAnomalieController::class, 'index']) ->name('createanomalie');
+Route::post('/createanomalie', [CreateAnomalieController::class, 'store']);
+
+Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'index']) ->name('createticket');
+Route::post('/createticket/{ressource:id}', [CreateTicketController::class, 'store']);
 
 
 

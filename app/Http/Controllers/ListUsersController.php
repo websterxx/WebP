@@ -14,6 +14,7 @@ class ListUsersController extends Controller
 
     public function index(){
         $users = User::get();
+
         return view('listusers' ,[
             'users' => $users
         ]);
