@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RessourcesController;
 use App\Http\Controllers\CRessourceController;
 use App\Http\Controllers\CreateUserController;
+use App\Http\Controllers\CreateTicketController;
 use App\Http\Controllers\ListUsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -35,6 +36,9 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/createuser', [CreateUserController::class, 'index']) ->name('createuser');
 Route::post('/createuser', [CreateUserController::class, 'store']);
+
+Route::get('/createticket', [CreateTicketController::class, 'index']) ->name('createticket');
+
 
 
 

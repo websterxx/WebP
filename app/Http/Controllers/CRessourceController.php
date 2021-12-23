@@ -21,7 +21,8 @@ class CRessourceController extends Controller
             'localisation'=> 'required|max:255',
         ]);
 
-        Ressource::create([
+
+        $request->user()->ressources()->create([
             'name' => $request->name,
             'localisation' => $request->localisation,
         ]);
