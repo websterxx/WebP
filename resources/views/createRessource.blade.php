@@ -1,37 +1,44 @@
-@extends('layouts.app')
+@extends('master')
 
 @section('content')
-    <div class="flex justify-center">
-        <div class="w-4/12 bg-white p-6 rounded-lg">
-               <form action="{{ route('createRessource')}}" method="POST">
-                @csrf
-                    <div class="mb-4">
-                        <label for="name" class="sr-only">Name</label>
-                        <input type="text" name="name" id="name" placeholder="Ressource name" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror" value="{{ old('name') }}">
+<div class="top_navbar">
+    <div class="top_menu">
+        <div class="logo">Maintenance </div>
+        <ul>
+            <li><a onclick="">
+                <i class="fas fa-home" onclick="window.location='{{ route("home") }}'"></i>
+                </a>
+            </li>
+            <li><a onclick="">
+                <i class="fas fa-sign-out-alt" onclick="window.location='{{ route("home") }}'"></i>
+                </a>
+            </li>
+            <a href="{{ route('createuser')}}" class="p-3">Create User</a>
+            <a href="{{ route('listusers')}}" class="p-3">List users</a>
+            <a href="{{ route('createRessource')}}" class="p-3">Create Ressource</a>
+            <a href="{{ route('ressources')}}" class="p-3">Ressources</a>
 
-                        @error('name')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="localisation" class="sr-only">Localisation</label>
-                        <input type="text" name="localisation" id="localisation" placeholder="Ressource localisation" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('localisation') border-red-500 @enderror" value="{{ old('localisation') }}">
+        </ul>
+    </div>
+</div>
 
-                        @error('localisation')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-
-                    <div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Add ressource</button>
-                    </div>
-               </form>
+    <div class="frame">
+        <div class="titre">
+            <label class="fontSize">Créer une ressources</label>
         </div>
+        <form method="POST" action="{{ route('createRessource')}}">
+            @csrf
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" id="nom" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Localisation</label>
+                <input type="text" class="form-control" name="localisation" id="localisation" >
+            </div>
+            <div class="title">
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
+            </div>
+        </form>
     </div>
 @endsection 
