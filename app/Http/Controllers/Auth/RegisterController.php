@@ -31,11 +31,10 @@ class RegisterController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'right' => 1,
+            'right' => 0,
         ]);
-        // sign the user in
-        auth()->attempt($request->only('email','password'));
+
         // redirect 
-        return redirect()->route('dashboard');
+        return redirect()->back();
     }
 }

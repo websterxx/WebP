@@ -13,7 +13,8 @@ class RessourcesController extends Controller
     }
     
     public function index(){
-        $ressources = Ressource::get();
+        $ressources = Ressource::where('user_id',auth()->user()->id)->get();
+        //$ressources = Ressource::get();
         return view('ressources' ,[
             'ressources' => $ressources
         ]);

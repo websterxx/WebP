@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ressource;
 use Illuminate\Http\Request;
-
+use DB;
 class CRessourceController extends Controller
 {
     public function __construct(){
@@ -21,9 +21,13 @@ class CRessourceController extends Controller
             'localisation'=> 'required|max:255',
         ]);
 
-        Ressource::create([
+        $id=DB::select("SHOW TABLE STATUS LIKE 'ressources'");
+        $next_id= $id[0]->Auto_increment;
+
+        $request->user()->ressources()->create([
             'name' => $request->name,
             'localisation' => $request->localisation,
+            'url' => 'http://127.0.0.1:8000/createticket/'.($next_id),
         ]);
 
         return back();

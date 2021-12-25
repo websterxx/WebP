@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ressource extends Model
+class Ticket extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'localisation',
-        'url',
+        'description',
+        'user_id',
+        'anomalie_id',
+        'ressource_id',
     ];
 }
