@@ -16,8 +16,6 @@ Route::get('/', function () {
     return view('login');
 })->name('home');
 
-/// ADMIN 
-
 Route::get('/listusers', [ListUsersController::class, 'index'])->name('listusers');
 Route::delete('/listusers/{id}', [ListUsersController::class, 'destroy'])->name('users.destroy');
 
