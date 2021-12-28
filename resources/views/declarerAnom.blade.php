@@ -13,9 +13,10 @@
 	<div class="top_menu">
 		<div class="logo">Maintenance </div>
 		<ul>
-		<li><a onclick="">
-			<i class="fas fa-home" onclick="window.location='{{ route("home") }}'"></i>
-			</a></li>
+			<li><a onclick="">
+				<i class="fas fa-home" onclick="window.location='{{ route("home") }}'"></i>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>

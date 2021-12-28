@@ -8,20 +8,23 @@ use DB;
 
 class ListUsersController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware(['auth']);
     }
 
-    public function index(){
+    public function index()
+    {
         $users = User::get();
 
-        return view('listusers' ,[
+        return view('ADMIN/listusers', [
             'users' => $users
         ]);
     }
 
-    public function destroy($id){
-        DB::delete('DELETE FROM users WHERE id= ?',[$id]);
+    public function destroy($id)
+    {
+        DB::delete('DELETE FROM users WHERE id= ?', [$id]);
         return back();
-     }
+    }
 }

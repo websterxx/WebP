@@ -3,7 +3,7 @@
 @section('script')
 @endsection
 
-@section('title' , 'Ta rah ')
+@section('title' , 'Login')
 
 @section('content')
     <div class="top_navbar">
@@ -18,7 +18,7 @@
     </div>
     <div class="frame">
         <div class="titre">
-        <label class="fontSize">Authentification </label>
+            <label class="fontSize">Authentification </label>
         </div>
         <form method="POST" action="{{ route('login')}}">
             @csrf

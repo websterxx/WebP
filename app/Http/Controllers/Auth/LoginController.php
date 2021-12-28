@@ -7,31 +7,31 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware(['guest']);
     }
 
-    public function index(){
-
-        return view('auth.login');
+    public function index()
+    {
+        return view('login');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
-            'email'=> 'required|email',
-            'password'=> 'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        if (!auth()->attempt($request->only('email','password') , $request->remember)) {
-            return back()->with('status','Invalid login details');
+        if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
+            return back()->with('status', 'Invalid login details');
         }
 
         if (auth()->user()->right == 0) {
             return redirect()->route('listusers');
+        } else {
+            return redirect()->route('ressources');
         }
-        else{
-            return redirect()->route('dashboard');
-        }
-    
     }
 }
