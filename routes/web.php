@@ -12,36 +12,44 @@ use App\Http\Controllers\ListUsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 
-Route::get('/', function (){
-    return view('home');
-}) ->name('home');
+Route::get('/', function () {
+    return view('login');
+})->name('home');
 
-Route::get('/dashboard', [DashboardController::class, 'index']) ->name('dashboard');
+/// ADMIN 
 
-Route::get('/listusers', [ListUsersController::class, 'index']) ->name('listusers');
-Route::delete('/listusers/{id}', [ListUsersController::class, 'destroy']) ->name('users.destroy');
+Route::get('/listusers', [ListUsersController::class, 'index'])->name('listusers');
+Route::delete('/listusers/{id}', [ListUsersController::class, 'destroy'])->name('users.destroy');
 
-Route::get('/ressources', [RessourcesController::class, 'index']) ->name('ressources');
-Route::delete('/ressources/{id}', [RessourcesController::class, 'destroy']) ->name('ressources.destroy');
-
-Route::get('/createRessource', [CRessourceController::class, 'index']) ->name('createRessource');
-Route::post('/createRessource', [CRessourceController::class, 'store']);
-
-Route::post('/logout', [LogoutController::class, 'store']) ->name('logout');
-
-Route::get('/login', [LoginController::class, 'index']) ->name('login');
-Route::post('/login', [LoginController::class, 'store']);
-
-Route::get('/register', [RegisterController::class, 'index']) ->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
-
-Route::get('/createuser', [CreateUserController::class, 'index']) ->name('createuser');
+Route::get('/createuser', [CreateUserController::class, 'index'])->name('createuser');
 Route::post('/createuser', [CreateUserController::class, 'store']);
 
-Route::get('/createanomalie', [CreateAnomalieController::class, 'index']) ->name('createanomalie');
+Route::get('/createanomalie', [CreateAnomalieController::class, 'index'])->name('createanomalie');
 Route::post('/createanomalie', [CreateAnomalieController::class, 'store']);
 
-Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'index']) ->name('createticket');
+// RESPONSABLE
+
+Route::get('/ressources', [RessourcesController::class, 'index'])->name('ressources');
+Route::delete('/ressources/{id}', [RessourcesController::class, 'destroy'])->name('ressources.destroy');
+
+Route::get('/createRessource', [CRessourceController::class, 'index'])->name('createRessource');
+Route::post('/createRessource', [CRessourceController::class, 'store']);
+
+Route::get('/missions', [DashboardController::class, 'index'])->name('missions');
+Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
+
+
+// GENERALE
+
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'index'])->name('createticket');
 Route::post('/createticket/{ressource:id}', [CreateTicketController::class, 'store']);
 
 
