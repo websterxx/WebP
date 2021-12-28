@@ -1,69 +1,64 @@
-@extends('layouts.app')
+@extends('master')
 
 @section('content')
-    <div class="flex justify-center">
-        <div class="w-4/12 bg-white p-6 rounded-lg">
-               <form action="{{ route('createuser')}}" method="POST">
-                @csrf
-                    <div class="mb-4">
-                        <label for="name" class="sr-only">Name</label>
-                        <input type="text" name="name" id="name" placeholder="Name" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror" value="{{ old('name') }}">
+<div class="top_navbar">
+    <div class="top_menu">
+        <div class="logo">Maintenance </div>
+        <ul>
+            <li><a onclick="">
+                <i class="fas fa-home" onclick="window.location='{{ route("home") }}'"></i>
+                </a>
+            </li>
+            <li><a onclick="">
+                <i class="fas fa-sign-out-alt" onclick="window.location='{{ route("home") }}'"></i>
+                </a>
+            </li>
+            <a href="{{ route('createuser')}}" class="p-3">Create User</a>
+            <a href="{{ route('listusers')}}" class="p-3">List users</a>
+            <a href="{{ route('createRessource')}}" class="p-3">Create Ressource</a>
+            <a href="{{ route('ressources')}}" class="p-3">Ressources</a>
 
-                        @error('name')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="username" class="sr-only">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Username" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('username') border-red-500 @enderror" value="{{ old('username') }}">
-
-                        @error('username')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Email" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('email') border-red-500 @enderror" value="{{ old('email') }}">
-
-                        @error('email')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password') border-red-500 @enderror" value="">
-
-                        @error('password')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="password_confirmation" class="sr-only">Confirm password</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm the password" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password_confirmation') border-red-500 @enderror" value="">
-
-                        @error('password_confirmation')
-                        <div class="text-red-500 mt-2 text-sm">
-                                {{ $message }}
-                        </div> 
-                        @enderror
-                    </div>
-                    <div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Create User</button>
-                    </div>
-               </form>
+        </ul>
+    </div>
+</div>
+    <div class="frame">
+        <div class="titre">
+            <label class="fontSize">Créer un nouveau utilisateur</label>
         </div>
+        <form method="POST" action="{{ route('createuser')}}">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" id="nom" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Address email</label>
+                <input type="email" class="form-control" name="email" id="email" >
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputState">Le type de l'utilisateur </label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Choisir...</option>
+                    <option>Resonsable</option>
+                    <option>Utilisateur</option>
+                  </select>
+                </div>
+              </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirmer mot de passe</label>
+                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+            </div>
+            <div class="title">
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
+            </div>
+        </form>
     </div>
 @endsection 
