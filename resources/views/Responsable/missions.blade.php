@@ -40,31 +40,26 @@ Liste des missions
         >
         <thead>
           <tr>
-            <th>ID</th>
             <th>Nom</th>
             <th>Localisation</th>
-            <!--<th>Modifier</th>-->
-            <th>Supprimer</th>
+            <th>Nom d'anomalie</th>
+            <th>Action</th>
 
           </tr>
         </thead>
         <tbody>
-            @foreach ($ressources as $ressource)
+            @foreach ($tickets as $ticket)
 
           <tr>
-            <td>{{ $ressource->id }}</td>
-            <td>{{ $ressource->name }}</td>
-            <td>{{ $ressource->localisation }}</td>
-            <!--<td><a href="#">Edit</a></td>-->
-            
-            <td><a href="{{ route('createRessource')}} " 
-                onclick="event.preventDefault();
-                 document.getElementById(
-                   'delete-form-{{$ressource->id}}').submit();"> Delete</a>
-             <form id="delete-form-{{$ressource->id}}" 
-                + action="{{route('ressources.destroy', $ressource->id)}}"
+            <td>{{ $ticket->ressourceName }}</td>
+            <td>{{ $ticket->localisation }}</td>
+            <td>{{ $ticket->anomalieName }}</td>            
+            <td><button type="button" class="btn btn-success" 
+                onclick="document.getElementById('delete-form-{{$ticket->id}}').submit();"> Accomplie</button>
+             <form id="delete-form-{{$ticket->id}}" 
+                + action="{{route('missions.destroy', $ticket->id)}}"
                 method="post">
-              @csrf 
+              @csrf
               @method('DELETE')
           </form></td>
             

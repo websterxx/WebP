@@ -105,3 +105,7 @@ body {
         font-size: 20px;
     }
 }
+
+.table td {
+    text-align: center;
+}

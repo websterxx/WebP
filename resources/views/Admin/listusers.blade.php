@@ -23,19 +23,13 @@ Liste des utilisateurs
           <a href="{{ route('createanomalie')}}" class="p-3">Créer une anomalie</a>
           <!--<a href="{{ route('createanomalie')}}" class="p-3">Liste des anomalie</a>-->
           
-          <li>  
+          <li>
+              <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                <i class="fas fa-sign-out-alt"></i>
+              </a>    
               <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
               </form>
-              <a onclick="document.getElementById('frm-logout').submit();">
-                <i class="fas fa-sign-out-alt"></i>
-              </a>  
-            <li>
-                <form action="{{ route('logout')}}" method="POST" class="p-3 inline">
-                    @csrf
-                    <button type="submit" >logout</button>
-                </form>
-            </li>
           </li>
       </ul>
   </div>
@@ -60,7 +54,7 @@ Liste des utilisateurs
             <th>Nom</th>
             <th>Email</th>
             <th>Username</th>
-            <th>Supprimer</th>
+            <th>Action</th>
 
           </tr>
         </thead>
@@ -72,9 +66,7 @@ Liste des utilisateurs
             <td>{{ $user->name}}</td>
             <td>{{ $user->email}}</td>
             <td>{{ $user->username}}</td>
-            <td>{{ $user->username}}</td>
-            <td><button class="btn btn-primary" href="{{ route('listusers')}} " 
-                onclick="document.getElementById('delete-form-{{$user->id}}').submit();"> Delete</button>
+            <td><button class="btn btn-danger" onclick="document.getElementById('delete-form-{{$user->id}}').submit();"> Delete</button>
             <form id="delete-form-{{$user->id}}" action="{{route('users.destroy', $user->id)}}"
                 method="post">
                 @csrf 

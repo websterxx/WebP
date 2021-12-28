@@ -12,7 +12,7 @@ Création d'une ressource
             <a href="{{ route('createRessource')}}" class="p-3">Create Ressource</a>
             <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
             <a href="{{ route('missions')}}" class="p-3">List des missions</a>
-
+  
             <li>
                 <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                   <i class="fas fa-sign-out-alt"></i>
@@ -23,7 +23,7 @@ Création d'une ressource
             </li>
         </ul>
     </div>
-</div>
+  </div>
 
     <div class="frame">
         <div class="titre">

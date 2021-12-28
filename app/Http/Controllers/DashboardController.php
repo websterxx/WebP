@@ -7,26 +7,29 @@ use DB;
 
 class DashboardController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware(['auth']);
     }
-    
-    public function index(){
-        $tickets = DB::table('tickets')
-        ->join('users', 'tickets.user_id', '=', 'users.id')
-        ->where('tickets.user_id', '=',  auth()->id())
-        ->join('anomalies', 'tickets.anomalie_id', '=', 'anomalies.id')
-        ->join('ressources', 'tickets.ressource_id', '=', 'ressources.id')
-        ->select('tickets.id','anomalies.name as anomalieName' , 'ressources.name as ressourceName' , 'ressources.localisation', 'tickets.description')
-        ->get();
 
-        return view('dashboard' ,[
+    public function index()
+    {
+        $tickets = DB::table('tickets')
+            ->join('users', 'tickets.user_id', '=', 'users.id')
+            ->where('tickets.user_id', '=',  auth()->id())
+            ->join('anomalies', 'tickets.anomalie_id', '=', 'anomalies.id')
+            ->join('ressources', 'tickets.ressource_id', '=', 'ressources.id')
+            ->select('tickets.id', 'anomalies.name as anomalieName', 'ressources.name as ressourceName', 'ressources.localisation', 'tickets.description')
+            ->get();
+
+        return view('Responsable/missions', [
             'tickets' => $tickets
         ]);
     }
 
-    public function destroy($id){
-        DB::delete('DELETE FROM tickets WHERE id= ?',[$id]);
+    public function destroy($id)
+    {
+        DB::delete('DELETE FROM tickets WHERE id= ?', [$id]);
         return back();
-     }
+    }
 }

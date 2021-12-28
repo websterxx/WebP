@@ -34,7 +34,7 @@ Route::get('/createRessource', [CRessourceController::class, 'index'])->name('cr
 Route::post('/createRessource', [CRessourceController::class, 'store']);
 
 Route::get('/missions', [DashboardController::class, 'index'])->name('missions');
-Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
+Route::delete('/missions/{id}', [DashboardController::class, 'destroy'])->name('missions.destroy');
 
 
 // GENERALE

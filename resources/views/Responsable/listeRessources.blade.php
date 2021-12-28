@@ -43,7 +43,7 @@ Liste des ressources
             <th>ID</th>
             <th>Nom</th>
             <th>Localisation</th>
-            <!--<th>Modifier</th>-->
+            <th>Info</th>
             <th>Supprimer</th>
 
           </tr>
@@ -55,18 +55,19 @@ Liste des ressources
             <td>{{ $ressource->id }}</td>
             <td>{{ $ressource->name }}</td>
             <td>{{ $ressource->localisation }}</td>
-            <!--<td><a href="#">Edit</a></td>-->
+            <td>
+              <button type="button" class="btn btn-info" onclick="getInfo()">Information</button>
+            </td>
             
-            <td><a href="{{ route('createRessource')}} " 
-                onclick="event.preventDefault();
-                 document.getElementById(
-                   'delete-form-{{$ressource->id}}').submit();"> Delete</a>
-             <form id="delete-form-{{$ressource->id}}" 
+            <td>
+              <button type="button" class="btn btn-danger" onclick="document.getElementById('delete-form-{{$ressource->id}}').submit();">Supprimer</button>
+              <form id="delete-form-{{$ressource->id}}" 
                 + action="{{route('ressources.destroy', $ressource->id)}}"
                 method="post">
-              @csrf 
-              @method('DELETE')
-          </form></td>
+                @csrf 
+                @method('DELETE')
+              </form>
+            </td>
             
           </tr>
           @endforeach
@@ -76,6 +77,11 @@ Liste des ressources
       </table>
   </div>
 
+  <script>
+    function getInfo(){
+      
+    }
+  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

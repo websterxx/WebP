@@ -29,36 +29,37 @@ Création des utilisateurs
             </li>
         </ul>
     </div>
-  </div>
-    <div class="frame">
-        <div class="titre">
-            <label class="fontSize">Créer un nouveau utilisateur</label>
-        </div>
-        <form action="{{ route('createuser')}}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nom</label>
-                <input type="text" class="form-control" name="name" id="nom" >
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="username" >
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Address email</label>
-                <input type="email" class="form-control" name="email" id="email" >
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" name="password" id="password">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Confirmer mot de passe</label>
-                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
-            </div>
-            <div class="title">
-                <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
-            </div>
-        </form>
+</div>
+
+<div class="frame">
+    <div class="titre">
+        <label class="fontSize">Créer un nouveau utilisateur</label>
     </div>
+    <form action="{{ route('createuser')}}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nom</label>
+            <input type="text" class="form-control" name="name" id="nom" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Address email</label>
+            <input type="email" class="form-control" name="email" id="email" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirmer mot de passe</label>
+            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+        </div>
+        <div class="title">
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
+        </div>
+    </form>
+</div>
 @endsection 

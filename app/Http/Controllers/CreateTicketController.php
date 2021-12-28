@@ -11,18 +11,20 @@ use DB;
 
 class CreateTicketController extends Controller
 {
-    public function index(Ressource $ressource){
+    public function index(Ressource $ressource)
+    {
         $user = User::find($ressource->user_id);
         $anomalies = Anomalie::get();
         //$user = DB::select('SELECT * from users where id= ?',[$ressource->user_id]);
-        return view('createticket',[
+        return view('createticket', [
             'ressource' => $ressource,
             'user' => $user,
             'anomalies' => $anomalies,
         ]);
     }
 
-    public function store(Request $request, Ressource $ressource){
+    public function store(Request $request, Ressource $ressource)
+    {
         $user = User::find($ressource->user_id);
 
         Ticket::create([
@@ -34,7 +36,5 @@ class CreateTicketController extends Controller
 
         // redirect 
         return redirect()->back();
-  }
-
-
+    }
 }
