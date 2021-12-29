@@ -20,7 +20,7 @@ Liste des utilisateurs
           
           <a href="{{ route('createuser')}}" class="p-3">Créer un utilisateur</a>
           <a href="{{ route('listusers')}}" class="p-3">Liste des utilisateurs</a>
-          <a href="{{ route('createanomalie')}}" class="p-3">Créer une anomalie</a>
+            <!--<a href="{{ route('createanomalie')}}" class="p-3">Créer une anomalie</a>-->
           <!--<a href="{{ route('createanomalie')}}" class="p-3">Liste des anomalie</a>-->
           
           <li>

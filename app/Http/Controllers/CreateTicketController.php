@@ -26,14 +26,32 @@ class CreateTicketController extends Controller
     public function store(Request $request, Ressource $ressource)
     {
         $user = User::find($ressource->user_id);
+        
+        if ($request->anomalie == 6) {
+            Anomalie::create([
+                'name' => $request->description,
+            ]);
 
-        Ticket::create([
-            'user_id' => $user->id,
-            'anomalie_id' => $request->anomalie,
-            'ressource_id' => $ressource->id,
-            'description' => $request->description,
-        ]);
-
+            $anomalie = DB::table('anomalies')
+             ->select('anomalies.*')
+             ->where('name', '=', $request->description)
+             ->get()->first();
+            
+            Ticket::create([
+                'user_id' => $user->id,
+                'anomalie_id' => $anomalie->id,
+                'ressource_id' => $ressource->id,
+                'description' => $request->description,
+            ]);
+        } 
+        else {
+            Ticket::create([
+                'user_id' => $user->id,
+                'anomalie_id' => $request->anomalie,
+                'ressource_id' => $ressource->id,
+                'description' => 'null',
+            ]);
+        }
         // redirect 
         return redirect()->back();
     }
