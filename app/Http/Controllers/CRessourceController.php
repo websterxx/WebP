@@ -15,7 +15,12 @@ class CRessourceController extends Controller
 
     public function index()
     {
-        return view('Responsable/createRessource');
+        if (auth()->user()->right == 1) {
+            return view('Responsable/createRessource');
+        } else {
+            return redirect()->back();
+        }
+        
     }
 
     public function store(Request $request)

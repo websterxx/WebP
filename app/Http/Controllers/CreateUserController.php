@@ -9,9 +9,19 @@ use Illuminate\Http\Request;
 
 class CreateUserController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
+
     public function index()
     {
-        return view('ADMIN/createuser');
+        if (auth()->user()->right == 0) {
+            return view('ADMIN/createuser');
+        } else {
+            return redirect()->back();
+        }
+        
     }
 
     public function store(Request $request)

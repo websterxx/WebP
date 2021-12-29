@@ -15,11 +15,17 @@ class RessourcesController extends Controller
 
     public function index()
     {
-        $ressources = Ressource::where('user_id', auth()->user()->id)->get();
-        //$ressources = Ressource::get();
-        return view('Responsable/listeressources', [
-            'ressources' => $ressources
-        ]);
+
+        if (auth()->user()->right == 1) {
+            $ressources = Ressource::where('user_id', auth()->user()->id)->get();
+            //$ressources = Ressource::get();
+            return view('Responsable/listeressources', [
+                'ressources' => $ressources
+            ]);
+        } else {
+            return redirect()->back();
+        }
+       
     }
 
     public function destroy($id)

@@ -17,7 +17,12 @@ class CreateAnomaliesTable extends Migration
             $table->id();
             $table->string('name');
             $table->timestamps();
+            
         });
+
+        DB::table('anomalies')->insert([
+            ['name' => 'Autre'],
+        ]);
     }
 
     /**
