@@ -5,7 +5,7 @@ Création d'une ressource
 @endsection
 
 @section('content')
-<!--
+
 <div class="top_navbar">
     <div class="top_menu">
         <div class="logo">Espace responsable</div>
@@ -25,8 +25,8 @@ Création d'une ressource
         </ul>
     </div>
 </div>
--->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<!--
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Espace responsable</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -54,7 +54,7 @@ Création d'une ressource
     </li>
     </div>
   </nav>
-
+-->
 <div class="frame">
     <div class="titre">
         <label class="fontSize">Créer une ressources</label>
