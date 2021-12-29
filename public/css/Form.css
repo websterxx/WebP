@@ -39,7 +39,8 @@ body {
 
 .top_navbar .top_menu .logo {
     /*width: 60%;*/
-    margin: auto;
+    /*margin: auto;*/
+    margin-left: 5px;
     color: #2e4ead;
     font-size: 20px;
     font-weight: 700;
@@ -100,9 +101,12 @@ body {
     font-size: 32px;
 }
 
-@media only screen and (max-width: 340px) {
+@media only screen and (max-width: 500px) {
     .fontSize {
         font-size: 20px;
+    }
+    .top_navbar .top_menu {
+        width: calc(100% - 10px);
     }
 }
 

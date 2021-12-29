@@ -7,9 +7,9 @@ Liste des ressources
 @section('content')
 <div class="top_navbar">
   <div class="top_menu">
-      <div class="logo">Maintenance </div>
+      <div class="logo">Espace responsable de maintenance</div>
       <ul>
-          <a href="{{ route('createRessource')}}" class="p-3">Create Ressource</a>
+          <a href="{{ route('createRessource')}}" class="p-3">Créer une ressource</a>
           <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
           <a href="{{ route('missions')}}" class="p-3">List des missions</a>
 
@@ -56,7 +56,7 @@ Liste des ressources
             <td>{{ $ressource->name }}</td>
             <td>{{ $ressource->localisation }}</td>
             <td>
-              <button type="button" class="btn btn-info" onclick="getInfo()">Information</button>
+              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource->id}})">Information</button>
             </td>
             
             <td>
@@ -78,8 +78,26 @@ Liste des ressources
   </div>
 
   <script>
-    function getInfo(){
-      
+    function getInfo(id){
+      console.log('DONE');
+
+      $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+      type: "POST",
+      url: "/simple-qrcode",
+      data: {
+        'id' : id
+      },
+      dataType: "json",
+      success: function (response) {
+          console.log('DONE2');
+          console.log(response);
+      }
+    });
     }
   </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

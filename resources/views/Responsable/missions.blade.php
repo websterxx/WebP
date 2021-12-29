@@ -6,23 +6,23 @@ Liste des missions
 
 @section('content')
 <div class="top_navbar">
-    <div class="top_menu">
-        <div class="logo">Maintenance </div>
-        <ul>
-            <a href="{{ route('createRessource')}}" class="p-3">Create Ressource</a>
-            <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
-            <a href="{{ route('missions')}}" class="p-3">List des missions</a>
+  <div class="top_menu">
+      <div class="logo">Espace responsable de maintenance</div>
+      <ul>
+          <a href="{{ route('createRessource')}}" class="p-3">Créer une ressource</a>
+          <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
+          <a href="{{ route('missions')}}" class="p-3">List des missions</a>
 
-            <li>
-                <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                  <i class="fas fa-sign-out-alt"></i>
-                </a>    
-                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-            </li>
-        </ul>
-    </div>
+          <li>
+              <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                <i class="fas fa-sign-out-alt"></i>
+              </a>    
+              <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+          </li>
+      </ul>
+  </div>
 </div>
 <div class="frame lg" >
     <table 

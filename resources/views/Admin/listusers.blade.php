@@ -11,7 +11,7 @@ Liste des utilisateurs
 @section('content')
 <div class="top_navbar">
   <div class="top_menu">
-      <div class="logo">Espace Admin </div>
+      <div class="logo">Espace Admin</div>
       <ul>
           <!--<li><a onclick="">
               <i class="fas fa-home" onclick="window.location='{{ route("home") }}'"></i>

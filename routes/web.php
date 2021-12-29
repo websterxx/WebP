@@ -11,6 +11,8 @@ use App\Http\Controllers\CreateTicketController;
 use App\Http\Controllers\ListUsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\SimpleQRcodeController;
+
 
 Route::get('/', function () {
     return view('login');
@@ -50,7 +52,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'index'])->name('createticket');
 Route::post('/createticket/{ressource:id}', [CreateTicketController::class, 'store']);
 
-
+Route::post("/simple-qrcode", [SimpleQRcodeController::class, 'generate']);
 
 
 

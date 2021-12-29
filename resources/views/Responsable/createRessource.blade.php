@@ -7,9 +7,9 @@ Création d'une ressource
 @section('content')
 <div class="top_navbar">
     <div class="top_menu">
-        <div class="logo">Maintenance </div>
+        <div class="logo">Espace responsable de maintenance</div>
         <ul>
-            <a href="{{ route('createRessource')}}" class="p-3">Create Ressource</a>
+            <a href="{{ route('createRessource')}}" class="p-3">Créer une ressource</a>
             <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
             <a href="{{ route('missions')}}" class="p-3">List des missions</a>
   
@@ -25,23 +25,23 @@ Création d'une ressource
     </div>
   </div>
 
-    <div class="frame">
-        <div class="titre">
-            <label class="fontSize">Créer une ressources</label>
-        </div>
-        <form action="{{ route('createRessource')}}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nom</label>
-                <input type="text" class="form-control" name="name" id="nom" >
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Localisation</label>
-                <input type="text" class="form-control" name="localisation" id="localisation" >
-            </div>
-            <div class="title">
-                <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
-            </div>
-        </form>
+<div class="frame">
+    <div class="titre">
+        <label class="fontSize">Créer une ressources</label>
     </div>
+    <form action="{{ route('createRessource')}}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nom</label>
+            <input type="text" class="form-control" name="name" id="nom" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Localisation</label>
+            <input type="text" class="form-control" name="localisation" id="localisation" >
+        </div>
+        <div class="title">
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
+        </div>
+    </form>
+</div>
 @endsection 
