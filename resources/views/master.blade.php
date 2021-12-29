@@ -8,6 +8,7 @@
     <link href="{{ asset('/css/Form.css') }}" rel="stylesheet">
     @yield('script')
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 </head>
 <body>

@@ -7,12 +7,12 @@ Liste des ressources
 @section('content')
 <div class="top_navbar">
   <div class="top_menu">
-      <div class="logo">Espace responsable de maintenance</div>
-      <ul>
-          <a href="{{ route('createRessource')}}" class="p-3">Créer une ressource</a>
-          <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
-          <a href="{{ route('missions')}}" class="p-3">List des missions</a>
-
+      <div class="logo">Espace responsable</div>
+      
+          <a href="{{ route('createRessource')}}" class="nav-link">Créer une ressource</a>
+          <a href="{{ route('ressources')}}" class="nav-link">List des ressources</a>
+          <a href="{{ route('missions')}}" class="nav-link">List des missions</a>
+        <ul>
           <li>
               <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                 <i class="fas fa-sign-out-alt"></i>
@@ -43,7 +43,8 @@ Liste des ressources
             <th>ID</th>
             <th>Nom</th>
             <th>Localisation</th>
-            <th>Info</th>
+            <th>URL</th>
+            <th>Imprimer</th>
             <th>Supprimer</th>
 
           </tr>
@@ -56,9 +57,11 @@ Liste des ressources
             <td>{{ $ressource->name }}</td>
             <td>{{ $ressource->localisation }}</td>
             <td>
-              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource->id}})">Information</button>
+              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource->id}})" data-toggle="modal" data-target="#modalInfo">Information</button>
             </td>
-            
+            <td>
+              <button type="button" class="btn btn-secondary" onclick="print()">Imprimer</button>
+            </td>
             <td>
               <button type="button" class="btn btn-danger" onclick="document.getElementById('delete-form-{{$ressource->id}}').submit();">Supprimer</button>
               <form id="delete-form-{{$ressource->id}}" 
@@ -75,16 +78,41 @@ Liste des ressources
  
         </tbody>
       </table>
+</div>
+
+<!-- Modal -->
+<div id="modalInfo" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Info ressource</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        L'URL de cette ressource est :
+        <div id="url" class="">
+        </div>
+            <div id="qrCode" class="">
+            </div>
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
   </div>
+</div>
 
-  <script>
-    function getInfo(id){
-      console.log('DONE');
+<script>
+  function getInfo(id){
+    console.log('DONE');
 
-      $.ajaxSetup({
+    $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+      }
     });
     $.ajax({
       type: "POST",
@@ -96,14 +124,25 @@ Liste des ressources
       success: function (response) {
           console.log('DONE2');
           console.log(response);
+          //var $con= 'response' + $response;
+          $('#qrCode').html(response);
+          $('#qrCode').append('response');
+          $('#url').html('http://127.0.0.1:8000/createticket/' + id);
+
+          //showInfo(response);
       }
     });
-    }
-  </script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/locale/bootstrap-table-fr-FR.min.js"></script>
+  }
+
+  function showInfo(response){
+    $('#qrCode').append(response);
+  }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/locale/bootstrap-table-fr-FR.min.js"></script>
 @endsection

@@ -53,6 +53,9 @@ Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'inde
 Route::post('/createticket/{ressource:id}', [CreateTicketController::class, 'store']);
 
 Route::post("/simple-qrcode", [SimpleQRcodeController::class, 'generate']);
+Route::get("/simple-qrcode", [SimpleQRcodeController::class, 'generate2']);
+
+//Route::get("simple-qrcode", "SimpleQRcodeController@generate2");
 
 
 

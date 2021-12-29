@@ -7,12 +7,12 @@ Liste des missions
 @section('content')
 <div class="top_navbar">
   <div class="top_menu">
-      <div class="logo">Espace responsable de maintenance</div>
-      <ul>
-          <a href="{{ route('createRessource')}}" class="p-3">Créer une ressource</a>
-          <a href="{{ route('ressources')}}" class="p-3">List des ressources</a>
-          <a href="{{ route('missions')}}" class="p-3">List des missions</a>
-
+      <div class="logo">Espace responsable</div>
+      
+          <a href="{{ route('createRessource')}}" class="nav-link">Créer une ressource</a>
+          <a href="{{ route('ressources')}}" class="nav-link">List des ressources</a>
+          <a href="{{ route('missions')}}" class="nav-link">List des missions</a>
+        <ul>
           <li>
               <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                 <i class="fas fa-sign-out-alt"></i>
