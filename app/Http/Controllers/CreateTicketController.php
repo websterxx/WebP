@@ -27,7 +27,7 @@ class CreateTicketController extends Controller
     {
         $user = User::find($ressource->user_id);
         
-        if ($request->anomalie == 6) {
+        if ($request->anomalie == 1) {
             Anomalie::create([
                 'name' => $request->description,
             ]);
@@ -43,8 +43,7 @@ class CreateTicketController extends Controller
                 'ressource_id' => $ressource->id,
                 'description' => $request->description,
             ]);
-        } 
-        else {
+        } else {
             Ticket::create([
                 'user_id' => $user->id,
                 'anomalie_id' => $request->anomalie,
