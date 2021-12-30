@@ -90,10 +90,8 @@ Liste des ressources
       </div>
       <div class="modal-body">
         L'URL de cette ressource est :
-        <div id="url" class="">
-        </div>
-            <div id="qrCode" class="">
-            </div>
+        <a id='url' href="" class="nav-link"></a>
+
             
       </div>
       <div class="modal-footer">
@@ -123,9 +121,11 @@ Liste des ressources
           console.log('DONE2');
           console.log(response);
           //var $con= 'response' + $response;
-          $('#qrCode').html(response);
-          $('#qrCode').append('response');
-          $('#url').html('http://127.0.0.1:8000/createticket/' + id);
+          //$('#qrCode').html(response);
+          //$('#qrCode').append('response');
+          var href = 'http://127.0.0.1:8000/createticket/' + id;
+          $('#url').html(href);
+          $('#url').attr('href', href)
 
           //showInfo(response);
       }
@@ -137,10 +137,4 @@ Liste des ressources
   }
 
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/locale/bootstrap-table-fr-FR.min.js"></script>
 @endsection

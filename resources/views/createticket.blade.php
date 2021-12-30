@@ -7,7 +7,7 @@
 @section('content')
 <div class="top_navbar">
   <div class="top_menu center_menu">
-      <div class="logo">Défaillance</div>
+      <div class="logoExp">Défaillance</div>
   </div>
 </div>
 
@@ -92,6 +92,4 @@
         }
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 @endsection

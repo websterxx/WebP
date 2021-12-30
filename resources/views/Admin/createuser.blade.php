@@ -7,19 +7,16 @@ Création des utilisateurs
 @section('script')
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $("#password_confirmation").on('keyup', function(){
             var password = $("#password").val();
             var confirmPassword = $("#password_confirmation").val();
-            $("#validate2").hide();
-            /*var string = $("#password_confirmation").val().toString();
-            console.log(string.lenght);*/
             if (password != confirmPassword && confirmPassword)
-                $("#validate").html("Les mots de passe saisis ne sont pas identiques").css("color","#dc3545");
+                $("#validate").html("Les mots de passe saisis ne sont pas identiques");
             else
-                $("#validate").html("Les mots de passe sont identiques!").css("color","#28a745");
+                $("#validate").html("Les mots de passe sont identiques!");
         });
-    });
+    });*/
 </script>  
 @endsection
 
@@ -46,20 +43,26 @@ Création des utilisateurs
     <div class="titre">
         <label class="fontSize">Créer un nouveau utilisateur</label>
     </div>
-    <form action="{{ route('createuser')}}" method="POST" class="needs-validation" novalidate>
+    <form action="{{ route('createuser')}}" method="POST" class="needs-validation" oninput='password_confirmation.setCustomValidity(password_confirmation.value != password.value ? "Passwords do not match." : "")' novalidate>
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" required>
+            <input type="text" class="form-control" name="name" id="nom" pattern=".{2,15}" title="Nombre de caractére entre 2 et 15"  required>
             <div class="valid-feedback">
                 Semble bon! 
+            </div>
+            <div id="errorNom" class="invalid-feedback">
+                Nombre de caractére entre 2 et 15
             </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" required>
+            <input type="text" class="form-control" name="username" id="username" pattern=".{2,15}" required>
             <div class="valid-feedback">
                 Semble bon! 
+            </div>
+            <div id="errorUsername" class="invalid-feedback">
+                Nombre de caractére entre 2 et 15
             </div>
         </div>
         <div class="mb-3">
@@ -68,6 +71,9 @@ Création des utilisateurs
             <div class="valid-feedback">
                 Semble bon! 
             </div>
+            <div id="errorEmail" class="invalid-feedback">
+                Format invalide
+            </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
@@ -75,10 +81,16 @@ Création des utilisateurs
             <div class="valid-feedback">
                 Semble bon! 
             </div>
+            <div id="errorPassword" class="invalid-feedback">
+                Doit contenir une lettre majuscule, miniscule et un chiffre
+            </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Confirmer mot de passe</label>
             <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" pattern="(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required>
+            <div class="valid-feedback">
+                Semble bon! 
+            </div>
             <div id="validate" class="invalid-feedback">
                 Les mots de passe saisis ne sont pas identiques
             </div>
@@ -96,30 +108,12 @@ Création des utilisateurs
               .forEach(function (form) {
               form.addEventListener('submit', function (event) {
                     if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                        event.preventDefault()
+                        event.stopPropagation()
                     }
-                    /*var email = $("#password").val();
-                    var confirmemail = $("#password_confirmation").val();
-                    if(email !== confirmemail){ 
-                        form.classList.add('was-validated');
-                        $("#validate").html("Email Should Match");
-                        $("#validate").addClass("error");
-                        $("#password_confirmation").addClass("error");
-                        event.preventDefault();
-                        event.stopPropagation();              
-                    }
-                    else{
-                        $("#validate").removeClass("error");
-                        form.classList.add('was-validated');
-                        $("#password_confirmation").removeClass("error-text");
-                        $("#validate").html("Looks Good!");
-                    }*/
-                
                   form.classList.add('was-validated')
               }, false)
               })
     })()
 </script>
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 @endsection 

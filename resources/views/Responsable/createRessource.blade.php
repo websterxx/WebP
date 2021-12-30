@@ -25,36 +25,6 @@ Création d'une ressource
         </ul>
     </div>
 </div>
-<!--
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Espace responsable</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ route('createRessource')}}" >Créer une ressourc <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('ressources')}}" class="nav-link">List des ressources</a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('missions')}}" class="nav-link">List des missions</a>
-        </li>
-      </ul>
-      <li>
-        <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>    
-        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-        </form>
-    </li>
-    </div>
-  </nav>
--->
 <div class="frame">
     <div class="titre">
         <label class="fontSize">Créer une ressources</label>
@@ -63,16 +33,22 @@ Création d'une ressource
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" required >
+            <input type="text" class="form-control" name="name" id="nom" pattern=".{2,15}" required >
             <div class="valid-feedback">
               Semble bon! 
+            </div>
+            <div id="errorNom" class="invalid-feedback">
+                Nombre de caractére entre 2 et 15
             </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Localisation</label>
-            <input type="text" class="form-control" name="localisation" id="localisation" required >
+            <input type="text" class="form-control" name="localisation" id="localisation" pattern=".{2,15}" required >
             <div class="valid-feedback">
               Semble bon! 
+            </div>
+            <div id="errorLoc" class="invalid-feedback">
+              Nombre de caractére entre 2 et 15
             </div>
         </div>
         <div class="title">
@@ -88,8 +64,8 @@ Création d'une ressource
             .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
+                  event.preventDefault()
+                  event.stopPropagation()
                 }
 
                 form.classList.add('was-validated')
