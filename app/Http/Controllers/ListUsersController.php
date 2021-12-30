@@ -18,13 +18,12 @@ class ListUsersController extends Controller
         $users = User::get();
 
         if (auth()->user()->right == 0) {
-            return view('ADMIN/listusers', [
+            return view('Admin/listusers', [
                 'users' => $users
             ]);
         } else {
             return redirect()->back();
         }
-
     }
 
     public function destroy($id)

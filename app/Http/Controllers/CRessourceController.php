@@ -20,7 +20,6 @@ class CRessourceController extends Controller
         } else {
             return redirect()->back();
         }
-        
     }
 
     public function store(Request $request)
@@ -36,7 +35,7 @@ class CRessourceController extends Controller
         $request->user()->ressources()->create([
             'name' => $request->name,
             'localisation' => $request->localisation,
-            'url' => 'http://127.0.0.1:8000/createticket/' . ($next_id),
+            'url' => 'http://192.168.76.76/public/createticket/' . ($next_id),
         ]);
 
         return back();

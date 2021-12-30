@@ -112,7 +112,7 @@ Liste des ressources
     });
     $.ajax({
       type: "POST",
-      url: "/simple-qrcode",
+      url: "/public/simple-qrcode",
       data: {
         'id' : id
       },
@@ -123,7 +123,7 @@ Liste des ressources
           //var $con= 'response' + $response;
           //$('#qrCode').html(response);
           //$('#qrCode').append('response');
-          var href = 'http://127.0.0.1:8000/createticket/' + id;
+          var href = 'http://192.168.76.76/public/createticket/' + id;
           $('#url').html(href);
           $('#url').attr('href', href)
 

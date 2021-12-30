@@ -10,7 +10,7 @@ class CreateAnomalieController extends Controller
     public function index()
     {
 
-        return view('ADMIN/createanomalie');
+        return view('Admin/createanomalie');
     }
 
     public function store(Request $request)

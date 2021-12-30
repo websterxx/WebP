@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\user;
-use Illuminate\support\Facades\Hash;
+use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CreateUserController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware(['auth']);
     }
 
     public function index()
     {
         if (auth()->user()->right == 0) {
-            return view('ADMIN/createuser');
+            return view('Admin/createuser');
         } else {
             return redirect()->back();
         }
-        
     }
 
     public function store(Request $request)
