@@ -112,6 +112,13 @@ body {
     .top_navbar .top_menu {
         width: calc(100% - 10px);
     }
+    .top_navbar .top_menu ul li a {
+        margin: 0;
+    }
+    .logo {
+        display: none;
+    }
+
     .nav-link {
         padding: 2px;
     }
@@ -120,6 +127,14 @@ body {
     }
 }
 
-.table td {
+.table th,
+td {
     text-align: center;
+}
+
+.error {
+    color: red !important;
+}
+.error-text {
+    border: 1px solid red !important;
 }

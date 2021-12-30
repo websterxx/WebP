@@ -12,26 +12,18 @@ Liste des utilisateurs
 <div class="top_navbar">
   <div class="top_menu">
       <div class="logo">Espace Admin</div>
-      <ul>
-          <!--<li><a onclick="">
-              <i class="fas fa-home" onclick="window.location='{{ route("home") }}'"></i>
-              </a>
-          </li>-->
-          
-          <a href="{{ route('createuser')}}" class="p-3">Créer un utilisateur</a>
-          <a href="{{ route('listusers')}}" class="p-3">Liste des utilisateurs</a>
-            <!--<a href="{{ route('createanomalie')}}" class="p-3">Créer une anomalie</a>-->
-          <!--<a href="{{ route('createanomalie')}}" class="p-3">Liste des anomalie</a>-->
-          
-          <li>
-              <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                <i class="fas fa-sign-out-alt"></i>
-              </a>    
-              <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-          </li>
-      </ul>
+          <a href="{{ route('createuser')}}" class="nav-link">Créer un utilisateur</a>
+          <a href="{{ route('listusers')}}" class="nav-link">Liste des utilisateurs</a>
+          <ul>
+            <li>
+                <a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                  <i class="fas fa-sign-out-alt"></i>
+                </a>    
+                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+            </li>
+        </ul>
   </div>
 </div>
 <div class="frame lg" >

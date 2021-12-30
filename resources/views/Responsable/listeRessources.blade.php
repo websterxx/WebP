@@ -40,10 +40,9 @@ Liste des ressources
         >
         <thead>
           <tr>
-            <th>ID</th>
             <th>Nom</th>
             <th>Localisation</th>
-            <th>URL</th>
+            <th>Information</th>
             <th>Imprimer</th>
             <th>Supprimer</th>
 
@@ -53,11 +52,10 @@ Liste des ressources
             @foreach ($ressources as $ressource)
 
           <tr>
-            <td>{{ $ressource->id }}</td>
             <td>{{ $ressource->name }}</td>
             <td>{{ $ressource->localisation }}</td>
             <td>
-              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource->id}})" data-toggle="modal" data-target="#modalInfo">Information</button>
+              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource->id}})" data-toggle="modal" data-target="#modalInfo">URL</button>
             </td>
             <td>
               <button type="button" class="btn btn-secondary" onclick="print()">Imprimer</button>

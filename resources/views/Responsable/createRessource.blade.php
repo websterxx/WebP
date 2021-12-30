@@ -59,19 +59,42 @@ Création d'une ressource
     <div class="titre">
         <label class="fontSize">Créer une ressources</label>
     </div>
-    <form action="{{ route('createRessource')}}" method="POST">
+    <form action="{{ route('createRessource')}}" method="POST"  class="needs-validation" novalidate>
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" >
+            <input type="text" class="form-control" name="name" id="nom" required >
+            <div class="valid-feedback">
+              Semble bon! 
+            </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Localisation</label>
-            <input type="text" class="form-control" name="localisation" id="localisation" >
+            <input type="text" class="form-control" name="localisation" id="localisation" required >
+            <div class="valid-feedback">
+              Semble bon! 
+            </div>
         </div>
         <div class="title">
             <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
         </div>
     </form>
 </div>
+<script>
+  (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+    })()
+</script>
 @endsection 
