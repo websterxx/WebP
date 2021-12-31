@@ -41,20 +41,22 @@
         <div class="mb-3">
             <label class="form-label">Anomalie</label>
             <select name="anomalie" id="anomalie" onchange="check(this.value)" class="form-control" required>
-                <option selected disabled value="">Choisir...</option>
                 @foreach ($anomalies as $anomalie)
                     <option value="{{ $anomalie->id }}">{{ $anomalie->name }}</option>
                 @endforeach
             </select>
             <div class="invalid-feedback">
-                Veuillez sélectionner un anomalie valide.
+                Veuillez sélectionner une anomalie.
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description" required>
+            <label class="form-label">Nouvelle anomalie</label>
+            <input type="text" class="form-control" name="description" id="description" pattern=".{2,50}" required>
             <div class="valid-feedback">
                 Semble bon!
+            </div>
+            <div id="errorDescription" class="invalid-feedback">
+                Nombre de caractére doit être entre 2 et 50
             </div>
         </div>
         @if ($errors->any())
