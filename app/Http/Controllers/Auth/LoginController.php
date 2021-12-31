@@ -25,7 +25,7 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($request->only('email', 'password'))) {
-            $errors = ['Invalid login details'];
+            $errors = ['Informations incorrectes'];
             return redirect()->back()->withErrors($errors);
         } else {
             if (auth()->user()->right == 0) {
