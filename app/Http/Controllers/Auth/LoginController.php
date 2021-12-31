@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,6 +16,13 @@ class LoginController extends Controller
 
     public function index()
     {
+        if (Auth::check()) {
+            if (auth()->user()->right == 0) {
+                return redirect()->route('listusers');
+            } else {
+                return redirect()->route('ressources');
+            }
+        }
         return view('login');
     }
 

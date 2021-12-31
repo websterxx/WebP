@@ -12,9 +12,18 @@ use App\Http\Controllers\ListUsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\SimpleQRcodeController;
+use Illuminate\Support\Facades\Auth;
+
 
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        if (auth()->user()->right == 0) {
+            return redirect()->route('listusers');
+        } else {
+            return redirect()->route('ressources');
+        }
+    }
     return view('login');
 })->name('home');
 
