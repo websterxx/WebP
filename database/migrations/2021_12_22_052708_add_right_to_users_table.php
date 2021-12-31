@@ -18,7 +18,9 @@ class AddRightToUsersTable extends Migration
         });
 
         DB::table('users')->insert([
-            ['name' => 'root', 'email' => 'root@gmail.com', 'password' => '$2y$10$8OzKzQ1re9O24r8oTk6T8.ce80xBUF71O7nWph./p5EOouKzMa2r2', 'username' => 'root', 'right' => 0],
+            [
+                'name' => 'root', 'email' => 'root@gmail.com', 'password' => '$2y$10$eUYahqKwYqanRsch4nOLxeN6/9IY4XoUdShw2Cc1Rth8VGs/UCTmO', 'username' => 'root', 'right' => 0
+            ],
         ]);
     }
 
