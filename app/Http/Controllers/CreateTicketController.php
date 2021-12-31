@@ -27,29 +27,31 @@ class CreateTicketController extends Controller
     {
         $user = User::find($ressource->user_id);
 
-        if ($request->description == null) {
-            $errors = ['Veuillez choisir un nom valide'];
-            return redirect()->back()->withErrors($errors);
-        }
-        else{
             if ($request->anomalie == 1) {
-                Anomalie::create([
-                    'name' => $request->description,
-                ]);
-    
-                $anomalie = DB::table('anomalies')
-                    ->select('anomalies.*')
-                    ->where('name', '=', $request->description)
-                    ->get()->first();
-    
-                Ticket::create([
-                    'user_id' => $user->id,
-                    'anomalie_id' => $anomalie->id,
-                    'ressource_id' => $ressource->id,
-                    'description' => $request->description,
-                ]);
-    
-                return back()->with('message', 'Anomalie enregistrer avec succès!');
+                if ($request->description == null) {
+                    $errors = ['Veuillez choisir un nom valide'];
+                    return redirect()->back()->withErrors($errors);
+                }
+                else{
+                    Anomalie::create([
+                        'name' => $request->description,
+                    ]);
+        
+                    $anomalie = DB::table('anomalies')
+                        ->select('anomalies.*')
+                        ->where('name', '=', $request->description)
+                        ->get()->first();
+        
+                    Ticket::create([
+                        'user_id' => $user->id,
+                        'anomalie_id' => $anomalie->id,
+                        'ressource_id' => $ressource->id,
+                        'description' => $request->description,
+                    ]);
+        
+                    return back()->with('message', 'Anomalie enregistrer avec succès!');
+                }
+
             } else {
     
                 $ticket = DB::table('tickets')
@@ -70,7 +72,7 @@ class CreateTicketController extends Controller
                     return redirect()->back()->withErrors($errors);
                 }
             }
-        }
+
         
     }
 }
