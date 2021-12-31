@@ -49,7 +49,7 @@ class CreateTicketController extends Controller
                     'description' => $request->description,
                 ]);
     
-                return redirect()->back();
+                return back()->with('message', 'Anomalie enregistrer avec succès!');
             } else {
     
                 $ticket = DB::table('tickets')
@@ -64,7 +64,7 @@ class CreateTicketController extends Controller
                         'ressource_id' => $ressource->id,
                         'description' => 'null',
                     ]);
-                    return redirect()->back();
+                    return back()->with('message', 'Anomalie enregistrer avec succès!');
                 } else {
                     $errors = ['Cette anomalie est déja déclarer pour cette ressource'];
                     return redirect()->back()->withErrors($errors);

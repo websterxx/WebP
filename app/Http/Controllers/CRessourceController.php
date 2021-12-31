@@ -44,7 +44,7 @@ class CRessourceController extends Controller
                 'localisation' => $request->localisation,
                 'url' => 'http://192.168.76.76/public/createticket/' . ($next_id),
             ]);
-            return back();
+            return back()->with('message', 'Ressource créer avec succès!');
         } else {
             $errors = ['Ressource de même nom existe dans cette localisation'];
             return redirect()->back()->withErrors($errors)->withInput($request->input());
