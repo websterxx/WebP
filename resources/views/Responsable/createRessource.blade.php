@@ -33,24 +33,33 @@ Création d'une ressource
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" value="{{ old('name') }}" pattern=".{2,15}" required >
+            <input type="text" class="form-control" name="name" id="nom" value="{{ old('name') }}" pattern=".{2,20}" required >
             <div class="valid-feedback">
               Semble bon! 
             </div>
             <div id="errorNom" class="invalid-feedback">
-                Nombre de caractére entre 2 et 15
+              Nombre de caractére doit être entre 2 et 20
             </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Localisation</label>
-            <input type="text" class="form-control" name="localisation" id="localisation" value="{{ old('localisation') }}" pattern=".{2,15}" required >
+            <input type="text" class="form-control" name="localisation" id="localisation" value="{{ old('localisation') }}" pattern=".{2,20}" required >
             <div class="valid-feedback">
               Semble bon! 
             </div>
             <div id="errorLoc" class="invalid-feedback">
-              Nombre de caractére entre 2 et 15
+              Nombre de caractére doit être entre 2 et 20
             </div>
         </div>
+          @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+          @endif
         <div class="title">
             <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
         </div>

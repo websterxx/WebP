@@ -20,7 +20,7 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Address email </label>
-                <input type="email" class="form-control"name="email" id="email" aria-describedby="emailHelp" required>
+                <input type="email" class="form-control"name="email" id="email" aria-describedby="emailHelp" value="{{ old('email') }}" required>
                     <div class="invalid-feedback">
                         Veuillez choisir un e-mail valide.
                     </div>
@@ -30,9 +30,12 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" name="password" id="password" required>
+                <input type="password" class="form-control" name="password" id="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required>
                 <div class="valid-feedback">
                     Semble bon! 
+                </div>
+                <div id="errorPassword" class="invalid-feedback">
+                    Doit contenir 8 caractère avec une lettre majuscule, miniscule et un chiffre
                 </div>
             </div>
             @if ($errors->any())

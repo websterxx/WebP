@@ -6,18 +6,6 @@ Création des utilisateurs
 
 @section('script')
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>
-    /*$(document).ready(function () {
-        $("#password_confirmation").on('keyup', function(){
-            var password = $("#password").val();
-            var confirmPassword = $("#password_confirmation").val();
-            if (password != confirmPassword && confirmPassword)
-                $("#validate").html("Les mots de passe saisis ne sont pas identiques");
-            else
-                $("#validate").html("Les mots de passe sont identiques!");
-        });
-    });*/
-</script>  
 @endsection
 
 @section('content')
@@ -52,7 +40,7 @@ Création des utilisateurs
                 Semble bon! 
             </div>
             <div id="errorNom" class="invalid-feedback">
-                Nombre de caractére entre 2 et 15
+                Nombre de caractére doit être entre 2 et 15
             </div>
         </div>
         <div class="mb-3">
@@ -62,7 +50,7 @@ Création des utilisateurs
                 Semble bon! 
             </div>
             <div id="errorUsername" class="invalid-feedback">
-                Nombre de caractére entre 2 et 15
+                Nombre de caractére doit être entre 2 et 15
             </div>
         </div>
         <div class="mb-3">
@@ -82,7 +70,7 @@ Création des utilisateurs
                 Semble bon! 
             </div>
             <div id="errorPassword" class="invalid-feedback">
-                Doit contenir une lettre majuscule, miniscule et un chiffre
+                Doit contenir 8 caractère avec une lettre majuscule, miniscule et un chiffre
             </div>
         </div>
         <div class="mb-3">
@@ -95,6 +83,15 @@ Création des utilisateurs
                 Les mots de passe saisis ne sont pas identiques
             </div>
         </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <div class="title">
             <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
         </div>

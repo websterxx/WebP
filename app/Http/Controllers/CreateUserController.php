@@ -6,6 +6,7 @@ use App\Models\user;
 use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class CreateUserController extends Controller
 {
@@ -34,15 +35,24 @@ class CreateUserController extends Controller
             'password' => 'required|confirmed',
         ]);
         // store user
-        User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'right' => 1,
-        ]);
-
-        // redirect 
-        return redirect()->back();
+        $user = User::find($request->email);
+        if ($user == null) {
+            // store user
+            User::create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'right' => 1,
+            ]);
+            // redirect 
+            return redirect()->back();
+        } else {
+            $errors = ['Veuillez choisir un autre email !'];
+            $name = $request->name;
+            $email = $request->email;
+            $username = $request->username;
+            return redirect()->back()->withErrors($errors)->with($name, $email, $username);
+        }
     }
 }
