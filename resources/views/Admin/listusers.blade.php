@@ -68,7 +68,7 @@ Liste des utilisateurs
  
         </tbody>
       </table>
-  </div>
+</div>
 
     <!-- Modal -->
     <div id="modalEditer" class="modal fade" tabindex="-1" role="dialog">

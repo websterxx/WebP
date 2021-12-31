@@ -47,7 +47,7 @@ Création des utilisateurs
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" pattern=".{2,15}" title="Nombre de caractére entre 2 et 15"  required>
+            <input type="text" class="form-control" name="name" id="nom" value="{{ old('name') }}" pattern=".{2,15}" title="Nombre de caractére entre 2 et 15"  required>
             <div class="valid-feedback">
                 Semble bon! 
             </div>
@@ -57,7 +57,7 @@ Création des utilisateurs
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" pattern=".{2,15}" required>
+            <input type="text" class="form-control" name="username" id="username" value="{{ old('usename') }}" pattern=".{2,15}" required>
             <div class="valid-feedback">
                 Semble bon! 
             </div>
@@ -67,7 +67,7 @@ Création des utilisateurs
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Address email</label>
-            <input type="email" class="form-control" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
             <div class="valid-feedback">
                 Semble bon! 
             </div>

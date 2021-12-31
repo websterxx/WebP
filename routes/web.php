@@ -52,12 +52,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'index'])->name('createticket');
 Route::post('/createticket/{ressource:id}', [CreateTicketController::class, 'store']);
 
-Route::post("/simple-qrcode", [SimpleQRcodeController::class, 'generate']);
-Route::get("/simple-qrcode", [SimpleQRcodeController::class, 'generate2']);
-
-//Route::get("simple-qrcode", "SimpleQRcodeController@generate2");
-
-
+Route::get("/simple-qrcode/{id}", [SimpleQRcodeController::class, 'generate'])->name('qrcode.generate');
 
 Route::get('/posts', function () {
     return view('posts.index');

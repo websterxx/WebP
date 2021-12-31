@@ -29,11 +29,11 @@ Création d'une ressource
     <div class="titre">
         <label class="fontSize">Créer une ressources</label>
     </div>
-    <form action="{{ route('createRessource')}}" method="POST"  class="needs-validation" novalidate>
+    <form action="{{ route('createRessource')}}" method="POST" class="needs-validation" novalidate>
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" pattern=".{2,15}" required >
+            <input type="text" class="form-control" name="name" id="nom" value="{{ old('name') }}" pattern=".{2,15}" required >
             <div class="valid-feedback">
               Semble bon! 
             </div>
@@ -43,7 +43,7 @@ Création d'une ressource
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Localisation</label>
-            <input type="text" class="form-control" name="localisation" id="localisation" pattern=".{2,15}" required >
+            <input type="text" class="form-control" name="localisation" id="localisation" value="{{ old('localisation') }}" pattern=".{2,15}" required >
             <div class="valid-feedback">
               Semble bon! 
             </div>

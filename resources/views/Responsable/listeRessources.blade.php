@@ -50,15 +50,21 @@ Liste des ressources
         </thead>
         <tbody>
             @foreach ($ressources as $ressource)
-
           <tr>
             <td>{{ $ressource->name }}</td>
             <td>{{ $ressource->localisation }}</td>
             <td>
-              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource->id}})" data-toggle="modal" data-target="#modalInfo">URL</button>
+              <button type="button" class="btn btn-info" onclick="getInfo({{$ressource}})" data-toggle="modal" data-target="#modalInfo">URL</button>
             </td>
             <td>
-              <button type="button" class="btn btn-secondary" onclick="print()">Imprimer</button>
+              <!--<button type="button" class="btn btn-secondary" onclick="print()">Imprimer</button>-->
+              <!--<button type="button" class="btn btn-secondary" onclick="window.location=''">QrCode</button>-->
+              <button class="btn btn-secondary" onclick="document.getElementById('qrcode-form-{{$ressource->id}}').submit();"> QrCode</button>
+                <form id="qrcode-form-{{$ressource->id}}" action="{{route('qrcode.generate', $ressource->id)}}"
+                    method="GET">
+                    @csrf 
+                    
+                </form>
             </td>
             <td>
               <button type="button" class="btn btn-danger" onclick="document.getElementById('delete-form-{{$ressource->id}}').submit();">Supprimer</button>
@@ -72,8 +78,6 @@ Liste des ressources
             
           </tr>
           @endforeach
-
- 
         </tbody>
       </table>
 </div>
@@ -91,8 +95,6 @@ Liste des ressources
       <div class="modal-body">
         L'URL de cette ressource est :
         <a id='url' href="" class="nav-link"></a>
-
-            
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -102,7 +104,7 @@ Liste des ressources
 </div>
 
 <script>
-  function getInfo(id){
+  function getQrCode(ressource){
     console.log('DONE');
 
     $.ajaxSetup({
@@ -114,26 +116,21 @@ Liste des ressources
       type: "POST",
       url: "/public/simple-qrcode",
       data: {
-        'id' : id
+        'id' : ressource.id
       },
       dataType: "json",
       success: function (response) {
           console.log('DONE2');
           console.log(response);
-          //var $con= 'response' + $response;
-          //$('#qrCode').html(response);
-          //$('#qrCode').append('response');
-          var href = 'http://192.168.76.76/public/createticket/' + id;
-          $('#url').html(href);
-          $('#url').attr('href', href)
-
-          //showInfo(response);
+          $('#qrCode').html(response);
+          $('#qrCode').append('response');  
       }
     });
   }
 
-  function showInfo(response){
-    $('#qrCode').append(response);
+  function getInfo(response){
+    $('#url').html(response.url);
+    $('#url').attr('href', response.url)
   }
 
 </script>
