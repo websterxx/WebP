@@ -49,14 +49,15 @@ class CreateTicketController extends Controller
                     'description' => $request->description,
                 ]);
     
-                return redirect()->back();
+                $succes = ['Anomalie déclaré avec succès'];
+                return redirect()->back()->with($succes);
             } else {
     
                 $ticket = DB::table('tickets')
                     ->where('anomalie_id', '=', $request->anomalie)
                     ->where('ressource_id', '=', $ressource->id)
                     ->first();
-    
+                
                 if (is_null($ticket)) {
                     Ticket::create([
                         'user_id' => $user->id,
@@ -64,7 +65,8 @@ class CreateTicketController extends Controller
                         'ressource_id' => $ressource->id,
                         'description' => 'null',
                     ]);
-                    return redirect()->back();
+                    $succes = ['Anomalie déclaré avec succès'];
+                    return redirect()->back()->with($succes);
                 } else {
                     $errors = ['Cette anomalie est déja déclarer pour cette ressource'];
                     return redirect()->back()->withErrors($errors);

@@ -54,7 +54,8 @@ class CreateUserController extends Controller
                 'right' => 1,
             ]);
             // redirect 
-            return redirect()->back();
+            $succes = ['Utilisateur créer avec succès'];
+            return redirect()->back()->with($succes);
         } else {
             $errors = ['Veuillez choisir un autre email !'];
             return redirect()->back()->withErrors($errors)->withInput($request->input());
