@@ -45,7 +45,7 @@ Création des utilisateurs
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" value="{{ old('usename') }}" pattern=".{2,15}" required>
+            <input type="text" class="form-control" name="username" id="username" value="{{ old('username') }}" pattern=".{2,15}" required>
             <div class="valid-feedback">
                 Semble bon! 
             </div>
