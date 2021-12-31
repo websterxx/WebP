@@ -13,8 +13,8 @@ class LoginController extends Controller
     }
 
     public function index()
-    {          
-            return view('login');      
+    {
+        return view('login');
     }
 
     public function store(Request $request)
@@ -25,13 +25,14 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($request->only('email', 'password'))) {
-            return back()->with('status', 'Invalid login details');
-        }
-
-        if (auth()->user()->right == 0) {
-            return redirect()->route('listusers');
+            $errors = ['Invalid login details'];
+            return redirect()->back()->withErrors($errors);
         } else {
-            return redirect()->route('ressources');
+            if (auth()->user()->right == 0) {
+                return redirect()->route('listusers');
+            } else {
+                return redirect()->route('ressources');
+            }
         }
     }
 }

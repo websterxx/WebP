@@ -35,7 +35,15 @@
                     Semble bon! 
                 </div>
             </div>
-            
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="title">
                 <button type="submit" class="btn btn-primary btn-lg mt-3">Se connecter</button>
             </div>
