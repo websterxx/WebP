@@ -30,33 +30,33 @@ class CreateTicketController extends Controller
         if ($request->description == null) {
             $errors = ['Veuillez choisir un nom valide'];
             return redirect()->back()->withErrors($errors);
-        }
-        else{
+        } else {
             if ($request->anomalie == 1) {
                 Anomalie::create([
                     'name' => $request->description,
                 ]);
-    
+
                 $anomalie = DB::table('anomalies')
                     ->select('anomalies.*')
                     ->where('name', '=', $request->description)
                     ->get()->first();
-    
+
+
                 Ticket::create([
                     'user_id' => $user->id,
-                    'anomalie_id' => $anomalie->id,
+                    'anomalie_id' => $request->anomalie,
                     'ressource_id' => $ressource->id,
-                    'description' => $request->description,
+                    'description' => 'null',
                 ]);
-    
-                return redirect()->back();
+
+                return back()->with('message', 'Anomalie enregistrer avec succès!');
             } else {
-    
+
                 $ticket = DB::table('tickets')
                     ->where('anomalie_id', '=', $request->anomalie)
                     ->where('ressource_id', '=', $ressource->id)
                     ->first();
-    
+
                 if (is_null($ticket)) {
                     Ticket::create([
                         'user_id' => $user->id,
@@ -64,13 +64,13 @@ class CreateTicketController extends Controller
                         'ressource_id' => $ressource->id,
                         'description' => 'null',
                     ]);
-                    return redirect()->back();
+                    $succes = ['Anomalie déclaré avec succès'];
+                    return redirect()->back()->with($succes);
                 } else {
                     $errors = ['Cette anomalie est déja déclarer pour cette ressource'];
                     return redirect()->back()->withErrors($errors);
                 }
             }
         }
-        
     }
 }
