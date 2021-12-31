@@ -41,11 +41,12 @@ class CreateTicketController extends Controller
                     ->where('name', '=', $request->description)
                     ->get()->first();
 
+
                 Ticket::create([
                     'user_id' => $user->id,
-                    'anomalie_id' => $anomalie->id,
+                    'anomalie_id' => $request->anomalie,
                     'ressource_id' => $ressource->id,
-                    'description' => $request->description,
+                    'description' => 'null',
                 ]);
 
                 return back()->with('message', 'Anomalie enregistrer avec succès!');
