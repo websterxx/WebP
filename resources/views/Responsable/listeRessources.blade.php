@@ -94,7 +94,7 @@ Liste des ressources
       </div>
       <div class="modal-body">
         L'URL de cette ressource est :
-        <a id='url' href="" class="nav-link"></a>
+        <a id='url' class="m-0" href="" class="nav-link"></a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

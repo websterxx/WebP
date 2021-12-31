@@ -16,7 +16,7 @@
 	<div class="titre">
 		<label class="fontSize">Authentification </label>
 	</div>
-	<div class="container ">
+	<div class="container">
 	<div id="etiquette" class="etiquette">
 		<div class="row h-100">
 			<div class="col-8 my-auto">

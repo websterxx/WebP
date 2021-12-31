@@ -35,22 +35,22 @@ Création des utilisateurs
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="nom" value="{{ old('name') }}" pattern=".{2,15}" title="Nombre de caractére entre 2 et 15"  required>
+            <input type="text" class="form-control" name="name" id="nom" value="{{ old('name') }}" pattern=".{2,30}" title="Nombre de caractére entre 2 et 15"  required>
             <div class="valid-feedback">
                 Semble bon! 
             </div>
             <div id="errorNom" class="invalid-feedback">
-                Nombre de caractére doit être entre 2 et 15
+                Nombre de caractére doit être entre 2 et 30
             </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" value="{{ old('usename') }}" pattern=".{2,15}" required>
+            <input type="text" class="form-control" name="username" id="username" value="{{ old('username') }}" pattern=".{2,30}" required>
             <div class="valid-feedback">
                 Semble bon! 
             </div>
             <div id="errorUsername" class="invalid-feedback">
-                Nombre de caractére doit être entre 2 et 15
+                Nombre de caractére doit être entre 2 et 30
             </div>
         </div>
         <div class="mb-3">
