@@ -6,8 +6,11 @@ use App\Models\user;
 use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Symfony\Component\Console\Input\Input;
+
 use DB;
+
 
 class CreateUserController extends Controller
 {
@@ -59,7 +62,9 @@ class CreateUserController extends Controller
             $name = $request->name;
             $email = $request->email;
             $username = $request->username;
-            return redirect()->back()->withErrors($errors)->with($name, $email, $username);
+            
+            //$request->input()
+            return redirect()->back()->withErrors($errors)->withInput($request->input());
         }
 
 
