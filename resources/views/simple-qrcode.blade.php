@@ -14,7 +14,7 @@
 </div>
 <div class="frame qr">
 	<div class="titre">
-		<label class="fontSize">Authentification </label>
+		<label class="fontSize">Impression du QR Code</label>
 	</div>
 	<div class="container">
 	<div id="etiquette" class="etiquette">

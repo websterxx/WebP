@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Formulaire
+    Formulaire défaillance
 @endsection
 
 @section('content')

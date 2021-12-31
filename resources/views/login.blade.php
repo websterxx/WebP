@@ -1,9 +1,6 @@
 @extends('master')
 
-@section('script')
-@endsection
-
-@section('title' , 'Login')
+@section('title' , 'Authentification')
 
 @section('content')
     <div class="top_navbar">

@@ -40,8 +40,8 @@ class CreateUserController extends Controller
         ]);
 
         $user = DB::table('users')
-        ->where('email', '=', $request->email)
-        ->first();
+            ->where('email', '=', $request->email)
+            ->first();
 
 
         if (is_null($user)) {
@@ -55,18 +55,9 @@ class CreateUserController extends Controller
             ]);
             // redirect 
             return redirect()->back();
-
         } else {
-            // It exists 
             $errors = ['Veuillez choisir un autre email !'];
-            $name = $request->name;
-            $email = $request->email;
-            $username = $request->username;
-            
-            //$request->input()
             return redirect()->back()->withErrors($errors)->withInput($request->input());
         }
-
-
     }
 }
