@@ -15,7 +15,7 @@ class ListUsersController extends Controller
 
     public function index()
     {
-        $users = User::get();
+        $users = User::where('right', 1)->get();
 
         if (auth()->user()->right == 0) {
             return view('Admin/listusers', [
