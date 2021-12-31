@@ -67,6 +67,11 @@
                         @endforeach
                     </ul>
                 </div>
+          @endif 
+          @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
           @endif
         <div class="title">
             <button type="submit" class="btn btn-primary btn-lg mt-3">Valider</button>
