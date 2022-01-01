@@ -47,6 +47,13 @@ Route::delete('/missions/{id}', [DashboardController::class, 'destroy'])->name('
 // GENERALE
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+Route::get(
+    '/logout',
+    function () {
+        return back();
+    }
+);
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
@@ -55,5 +62,3 @@ Route::get('/createticket/{ressource:id}', [CreateTicketController::class, 'inde
 Route::post('/createticket/{ressource:id}', [CreateTicketController::class, 'store']);
 
 Route::get("/simple-qrcode/{id}", [SimpleQRcodeController::class, 'generate'])->name('qrcode.generate');
-
-

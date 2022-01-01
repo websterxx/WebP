@@ -42,7 +42,7 @@ class CRessourceController extends Controller
             $request->user()->ressources()->create([
                 'name' => $request->name,
                 'localisation' => $request->localisation,
-                'url' => 'http://192.168.76.76/public/createticket/' . ($next_id),
+                'url' => 'http://192.168.76.76/createticket/' . ($next_id),
             ]);
             return back()->with('message', 'Ressource créer avec succès!');
         } else {
