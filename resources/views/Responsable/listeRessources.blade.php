@@ -57,9 +57,7 @@ Liste des ressources
               <button type="button" class="btn btn-info" onclick="getInfo({{$ressource}})" data-toggle="modal" data-target="#modalInfo">URL</button>
             </td>
             <td>
-              <!--<button type="button" class="btn btn-secondary" onclick="print()">Imprimer</button>-->
-              <!--<button type="button" class="btn btn-secondary" onclick="window.location=''">QrCode</button>-->
-              <button class="btn btn-secondary" onclick="document.getElementById('qrcode-form-{{$ressource->id}}').submit();"> QrCode</button>
+              <button class="btn btn-secondary" onclick="document.getElementById('qrcode-form-{{$ressource->id}}').submit();"> QR Code</button>
                 <form id="qrcode-form-{{$ressource->id}}" action="{{route('qrcode.generate', $ressource->id)}}"
                     method="GET">
                     @csrf 

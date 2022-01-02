@@ -33,8 +33,6 @@ body {
     align-items: center;
     padding: 0 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    /*border: 1px solid;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);*/
 }
 
 .top_navbar .center_menu {
@@ -42,8 +40,6 @@ body {
 }
 
 .top_navbar .top_menu .logo {
-    /*width: 60%;*/
-    /*margin: auto;*/
     margin-left: 5px;
     color: #2e4ead;
     font-size: 20px;
@@ -52,7 +48,6 @@ body {
 }
 
 .top_navbar .top_menu .logoExp {
-    /*width: 60%;*/
     margin: auto;
     color: #2e4ead;
     font-size: 20px;
@@ -118,7 +113,7 @@ body {
     font-size: 14px;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 780px) {
     .fontSize {
         font-size: 20px;
     }
@@ -146,7 +141,6 @@ body {
     }
     .container {
         padding: 0;
-        margin: 0;
     }
 }
 
@@ -164,11 +158,70 @@ td {
 
 .etiquette {
     margin: auto;
-    width: 397px;
-    height: 159px;
+    width: 105mm;
+    height: 42mm;
     padding: 10px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
     background: #f9f9f9;
+}
+
+.etiquetteDiv {
+    float: left;
+    margin-top: 20px;
+}
+
+.position1 {
+    margin: 0 0 0 0 !important;
+}
+.position3 {
+    margin: 42mm 0 0 0 !important;
+}
+
+.position5 {
+    margin: 88mm 0 0 0 !important;
+}
+
+.position7 {
+    margin: 130mm 0 0 0 !important;
+}
+
+.position9 {
+    margin: 172mm 0 0 0 !important;
+}
+
+.position11 {
+    margin: 214mm 0 0 0 !important;
+}
+
+.position13 {
+    margin: 256mm 0 0 0 !important;
+}
+
+.position2 {
+    margin: 0 0 0 105mm !important;
+}
+.position4 {
+    margin: 42mm 0 0 105mm !important;
+}
+
+.position6 {
+    margin: 88mm 0 0 105mm !important;
+}
+
+.position8 {
+    margin: 130mm 0 0 105mm !important;
+}
+
+.position10 {
+    margin: 172mm 0 0 105mm !important;
+}
+
+.position12 {
+    margin: 214mm 0 0 105mm !important;
+}
+
+.position14 {
+    margin: 256mm 0 0 105mm !important;
 }
 
 .qrcode,
@@ -176,4 +229,15 @@ td {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    html,
+    body {
+        width: 210mm;
+        height: 298mm;
+    }
 }
