@@ -6,8 +6,6 @@ use App\Models\user;
 use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Symfony\Component\Console\Input\Input;
 
 use DB;
 

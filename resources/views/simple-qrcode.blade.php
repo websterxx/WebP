@@ -10,6 +10,15 @@
 	<div class="top_menu">
 		<div class="logoExp">Maintenance </div>
 		<ul>
+			<li>
+				<a onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+				  <i class="fas fa-sign-out-alt"></i>
+				</a>    
+				<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+				  @csrf
+				</form>
+			</li>
+		</ul>
 	</div>
 </div>
 <div class="frame qr">

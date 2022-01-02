@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         if (!auth()->attempt($request->only('email', 'password'))) {
             $errors = ['Informations incorrectes'];
-            return redirect()->back()->withErrors($errors);
+            return redirect()->back()->withErrors($errors)->withInput($request->input());;
         } else {
             if (auth()->user()->right == 0) {
                 return redirect()->route('listusers');
